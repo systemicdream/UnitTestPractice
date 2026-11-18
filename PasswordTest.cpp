@@ -18,14 +18,28 @@ TEST(PasswordTest, single_letter_password)
 {
 	Password my_password;
 	int actual = my_password.count_leading_characters("W");
-	ASSERT_EQ(11, actual);
+	ASSERT_EQ(1, actual);
 }
 
 TEST(PasswordTest, nihonngo)
 {
 	Password my_password;
 	int actual = my_password.count_leading_characters("こんばんわ");
-	ASSERT_EQ(5, actual);
+	ASSERT_EQ(1, actual);
+}
+
+TEST(PasswordTest, repeated_leading_characters)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("aaab");
+	ASSERT_EQ(3, actual);
+}
+
+TEST(PasswordTest, empty_string)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("");
+	ASSERT_EQ(0, actual);
 }
 
 TEST(PasswordTest, has_mixed_case)
